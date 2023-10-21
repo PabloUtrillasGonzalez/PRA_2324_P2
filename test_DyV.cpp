@@ -24,6 +24,29 @@ int main(){
 
         vector<double> f = {10.3,9.11,7.2,6.5,5.0,3.5,2.2,2.0,1.5,1.0};
         cout << "Busqueda float 9.11 en posicion: "<<busBin_INV(9.11,f,0,f.size()) << endl;
+	
+	cout << "\nProbando QuickSort:" << endl;
+
+	vector<int> g = {10,9,8,7,6,5,4,3,2,1};
+        cout << "Ordenacion vector g: " << endl;
+	quickSort(g,0,g.size());
+	for(int i = 0; i < g.size(); i++){
+		cout << "Posicion " << i << ", valor = " << g[i] << endl;
+	}
+
+	vector<char> h = {'j','i','h','g','f','e','d','c','b','a'};
+        cout << "Ordenacion vector h: " << endl;
+        quickSort(h,0,h.size());
+        for(int i = 0; i < h.size(); i++){
+                cout << "Posicion " << i << ", valor = " << h[i] << endl;
+        }
+
+        vector<double> j = {10.3,9.11,7.2,6.5,5.0,3.5,2.2,2.0,1.5,1.0};
+        cout << "Ordenacion vector j: " << endl;
+        quickSort(j,0,j.size());
+        for(int i = 0; i < j.size(); i++){
+                cout << "Posicion " << i << ", valor = " << j[i] << endl;
+        }
 
         return 0;
 }

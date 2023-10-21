@@ -39,3 +39,33 @@ int busBin_INV(val2 valor, vector<val2>& vect,int ini, int fin){
         }
 }
 
+
+template<typename val3>
+int partition(vector<val3>& v, int ini, int fin){
+        val3 x = v[fin];
+        int i = ini;
+
+        for(int j = ini; j < fin ; j++){
+                if(v[j] <= x){
+                        val3 aux = v[j];
+                        v[j] = v[i];
+                        v[i] = aux;
+			i= i + 1;
+                }
+        }
+        val3 aux = v[i];
+        v[i] = v[fin];
+        v[fin] = aux;
+        return i;
+}
+
+
+template<typename val3>
+void quickSort(vector<val3>& v,int ini, int fin){
+	if(ini < fin){
+		int piv = partition(v,ini,fin);
+		quickSort(v,ini,piv-1);
+		quickSort(v,piv+1,fin);
+
+	}
+}
