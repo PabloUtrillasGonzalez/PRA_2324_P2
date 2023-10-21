@@ -41,7 +41,7 @@ int busBin_INV(val2 valor, vector<val2>& vect,int ini, int fin){
 
 
 template<typename val3>
-int partition(vector<val3>& v, int ini, int fin){
+int partitionFIN(vector<val3>& v, int ini, int fin){
         val3 x = v[fin];
         int i = ini;
 
@@ -61,11 +61,64 @@ int partition(vector<val3>& v, int ini, int fin){
 
 
 template<typename val3>
-void quickSort(vector<val3>& v,int ini, int fin){
+void quickSortFIN(vector<val3>& v,int ini, int fin){
 	if(ini < fin){
-		int piv = partition(v,ini,fin);
-		quickSort(v,ini,piv-1);
-		quickSort(v,piv+1,fin);
+		int piv = partitionFIN(v,ini,fin);
+		quickSortFIN(v,ini,piv-1);
+		quickSortFIN(v,piv+1,fin);
 
 	}
 }
+
+template<typename val3>
+int partitionINI(vector<val3>& v, int ini, int fin){
+	val3 x = v[ini];
+    int i = ini;
+    for(int j = ini + 1; j <= fin; j++) {
+        if(v[j] < x) {
+            i++;
+            swap(v[i], v[j]);
+        }
+    }
+    swap(v[ini], v[i]);
+    return i;
+}
+
+
+template<typename val3>
+void quickSortINI(vector<val3>& v,int ini, int fin){
+        if(ini < fin){
+                int piv = partitionINI(v,ini,fin);
+                quickSortINI(v,ini,piv-1);
+                quickSortINI(v,piv+1,fin);
+
+        }
+}
+
+template<typename val3>
+int partitionMID(vector<val3>& v, int ini, int fin){
+	int medio =  (ini + fin) / 2;
+	val3 x = v[medio];
+	swap(v[medio], v[fin]);
+	int i = ini;
+	for (int j = ini; j < fin; j++) {
+		if (v[j] <= x) {
+			swap(v[i], v[j]);
+			i++;
+		}
+	}
+	swap(v[i], v[fin]);
+	return i;
+}
+
+
+template<typename val3>
+void quickSortMID(vector<val3>& v,int ini, int fin){
+        if(ini < fin){
+                int piv = partitionMID(v,ini,fin);
+                quickSortMID(v,ini,piv-1);
+                quickSortMID(v,piv+1,fin);
+
+        }
+}
+

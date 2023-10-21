@@ -1,5 +1,6 @@
 #include "DyV.h"
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 
@@ -27,26 +28,39 @@ int main(){
 	
 	cout << "\nProbando QuickSort:" << endl;
 
+	auto start = std::chrono::system_clock::now();
+
 	vector<int> g = {10,9,8,7,6,5,4,3,2,1};
-        cout << "Ordenacion vector g: " << endl;
-	quickSort(g,0,g.size());
+        cout << "Ordenacion vector posicion Inicial g: " << endl;
+	quickSortINI(g,0,g.size()-1);
 	for(int i = 0; i < g.size(); i++){
 		cout << "Posicion " << i << ", valor = " << g[i] << endl;
 	}
+	auto end = std::chrono::system_clock::now();
+	std::chrono::duration<float, std::milli> duration = end - start;
+	cout << "Time: " << duration.count() << "s" << std::endl;
 
+	start = std::chrono::system_clock::now();
 	vector<char> h = {'j','i','h','g','f','e','d','c','b','a'};
-        cout << "Ordenacion vector h: " << endl;
-        quickSort(h,0,h.size());
+        cout << "Ordenacion vector posicion Medio h: " << endl;
+        quickSortMID(h,0,h.size()-1);
         for(int i = 0; i < h.size(); i++){
                 cout << "Posicion " << i << ", valor = " << h[i] << endl;
         }
+	end = std::chrono::system_clock::now();
+        duration = end - start;
+        cout << "Time: " << duration.count() << "s" << std::endl;
 
+	start = std::chrono::system_clock::now();
         vector<double> j = {10.3,9.11,7.2,6.5,5.0,3.5,2.2,2.0,1.5,1.0};
-        cout << "Ordenacion vector j: " << endl;
-        quickSort(j,0,j.size());
+        cout << "Ordenacion vector posicion Final j: " << endl;
+        quickSortFIN(j,0,j.size()-1);
         for(int i = 0; i < j.size(); i++){
                 cout << "Posicion " << i << ", valor = " << j[i] << endl;
         }
+	end = std::chrono::system_clock::now();
+        duration = end - start;
+        cout << "Time: " << duration.count() << "s" << std::endl;
 
         return 0;
 }
